@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class TOC extends Component {
     shouldComponentUpdate(newProps, newState){
+        // 바뀐 값이 없을 땐 render가 호출되지 않도록 하여 성능 향상
         console.log('TOC render shouldComponentUpdate'
         ,newProps.data
         ,this.props.data
