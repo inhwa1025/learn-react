@@ -41,12 +41,18 @@ class App extends Component {
   render() {
     return (
       <>
+        <Navbar
+          totalCount = {this.state.habits.filter(item => item.count > 0).length}
+        />
+        <Addhabit
+        />
         <Habits
           habits = {this.state.habits}
           onIncrement={this.handleIncrement}
           onDecrement={this.handleDecrement}
           onDelete={this.handleDelete}
         />
+        
       </>
     );
   }
