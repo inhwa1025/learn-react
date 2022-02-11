@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
+import AddHabit from './addHabit';
+import Habit from './habit';
 
 class Habits extends Component {
   render() {
+    console.log('habits');
     return (
-      <div>
+      <div className="habits">
+        <ul>
+          <AddHabit 
+            onAdd={this.props.onAdd}
+          />
+          {this.props.habits.map(habit => (
+            <Habit
+              habit={habit}
+              onIncrement={this.props.onIncrement}
+              onDecrement={this.props.onDecrement}
+              onDelete={this.props.onDelete}
+            />
+          ))}
+        </ul>
         
       </div>
     );
