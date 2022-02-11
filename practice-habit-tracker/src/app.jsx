@@ -29,7 +29,7 @@ class App extends Component {
   handleDecrement = (habit) => {
     const habits = this.state.habits.map(item => {
       if(habit.id === item.id){
-        const count = habit.count - 1
+        const count = habit.count - 1;
         return {...habit, count: count > 0 ? count: 0};
       }
       return item;
@@ -39,6 +39,16 @@ class App extends Component {
 
   handleDelete = (habit) => {
     const habits = this.state.habits.filter(item => item.id !== habit.id);
+    this.setState({habits});
+  };
+
+  handleReset = () => {
+    const habits = this.state.habits.map(item => {
+      if(item.count !== 0) {
+        return {...item, count: 0}
+      }
+      return item;
+    })
     this.setState({habits});
   };
 
@@ -55,6 +65,7 @@ class App extends Component {
         onIncrement={this.handleIncrement}
         onDecrement={this.handleDecrement}
         onDelete={this.handleDelete}
+        onReset={this.handleReset}
       />
     </>
   );
