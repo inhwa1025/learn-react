@@ -46,7 +46,7 @@ class App extends Component {
     return (
     <>
       <Navbar 
-        // totalCount={}
+        totalCount={this.state.habits.filter(item => item.count > 0).length}
       />
       <Habits 
         id={this.state.habits.id}
