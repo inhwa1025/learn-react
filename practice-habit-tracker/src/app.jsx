@@ -12,8 +12,9 @@ class App extends Component {
     ],
   };
 
-  handleAdd = (habit) => {
-
+  handleAdd = (name) => {
+    const habits = [...this.state.habits, {id: Date.now(), name, count: 0}];
+    this.setState({habits});
   };
 
   handleIncrement = (habit) => {
