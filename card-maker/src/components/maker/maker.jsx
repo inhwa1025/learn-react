@@ -7,6 +7,41 @@ import Preview from '../preview/preview';
 import styles from './maker.module.css';
 
 const Maker = ({ authService }) => {
+  const [cards, setCards] = useState([
+    {
+      id: '1',
+      name: 'hwa',
+      company: 'khu',
+      theme: 'colorful',
+      title: 'Software Engineer',
+      email: 'inhwa9901@gmail.com',
+      message: 'jonna stay',
+      filename: 'hwa',
+      fileURL: null
+    },
+    {
+      id: '2',
+      name: 'hwa2',
+      company: 'khu',
+      theme: 'light',
+      title: 'Software Engineer',
+      email: 'inhwa9901@gmail.com',
+      message: 'jonna stay',
+      filename: 'hwa',
+      fileURL: null
+    },
+    {
+      id: '3',
+      name: 'hwa3',
+      company: 'khu',
+      theme: 'dark',
+      title: 'Software Engineer',
+      email: 'inhwa9901@gmail.com',
+      message: 'jonna stay',
+      filename: 'hwa',
+      fileURL: null
+    }
+  ]);
   const history = useHistory();
   const onLogout = () => {
     authService.logout();
@@ -24,8 +59,8 @@ const Maker = ({ authService }) => {
     <section className={styles.maker}>
       <Header onLogout={onLogout} />
       <div className={styles.container}>
-        <Editor />
-        <Preview />
+        <Editor cards={cards} />
+        <Preview cards={cards} />
       </div>
       <Footer />
     </section>
