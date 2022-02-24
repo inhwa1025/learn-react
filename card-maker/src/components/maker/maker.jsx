@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Editor from '../editor/editor';
 import Footer from '../footer/footer';
 import Header from '../header/header';
+import Editor from '../editor/editor';
 import Preview from '../preview/preview';
 import styles from './maker.module.css';
 
@@ -47,24 +47,29 @@ const Maker = ({ authService }) => {
     authService.logout();
   };
 
-  useEffect( () => {
+  useEffect(() => {
     authService.onAuthChange(user => {
-      if(!user) {
-        history.push('/')
+      if (!user) {
+        history.push('/');
       }
-    })
+    });
   });
+
+  const addCard = card => {
+    const updated = [...cards, card];
+    setCards(updated);
+  };
 
   return (
     <section className={styles.maker}>
       <Header onLogout={onLogout} />
       <div className={styles.container}>
-        <Editor cards={cards} />
+        <Editor cards={cards} addCard={addCard} />
         <Preview cards={cards} />
       </div>
       <Footer />
     </section>
-  )
+  );
 };
 
 export default Maker;
